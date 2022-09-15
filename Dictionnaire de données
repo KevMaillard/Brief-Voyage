@@ -1,0 +1,8 @@
+Client = (Id_Client COUNTER, Nom VARCHAR(50), Prenom VARCHAR(50), DDN DATE);
+Vol = (Id_Vol COUNTER, Compagnie VARCHAR(50), Aéroport_de_départ VARCHAR(50), Aéroport_d_arrivée VARCHAR(50), Date_de_départ DATETIME, Date_d_arrivée DATETIME, Destination VARCHAR(50));
+Compagnie = (Id_Compagnie COUNTER, Nom VARCHAR(50));
+Aéroport = (Id_Aéroport COUNTER, Vols_au_départ VARCHAR(50), Vols_à_l_arrivée VARCHAR(50), Villes_desservies VARCHAR(50));
+Escale = (Id_Escale COUNTER, #(Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée));
+Reserver = (#Id_Client, #(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée));
+Assurer = (#(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée), #Id_Compagnie);
+Atterrir = (#(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée), #(Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée));
