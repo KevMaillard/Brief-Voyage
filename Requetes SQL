@@ -3,6 +3,8 @@ CREATE TABLE Client(
    Nom VARCHAR(50),
    Prenom VARCHAR(50),
    DDN DATE,
+   email VARCHAR(50),
+   numéro_de_téléphone VARCHAR(10),
    PRIMARY KEY(Id_Client)
 );
 
@@ -11,10 +13,12 @@ CREATE TABLE Vol(
    Compagnie VARCHAR(50),
    Aéroport_de_départ VARCHAR(50),
    Aéroport_d_arrivée VARCHAR(50),
+   Escale VARCHAR(50),
    Date_de_départ DATETIME,
    Date_d_arrivée DATETIME,
-   Destination VARCHAR(50),
-   PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée)
+   Ouvir_Vol LOGICAL,
+   Fermer_Vol LOGICAL,
+   PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale)
 );
 
 CREATE TABLE Compagnie(
@@ -33,6 +37,8 @@ CREATE TABLE Aéroport(
 
 CREATE TABLE Escale(
    Id_Escale COUNTER,
+   Heure_d_arrivé TIME,
+   Heure_de_départ TIME,
    Id_Aéroport INT NOT NULL,
    Vols_au_départ VARCHAR(50) NOT NULL,
    Vols_à_l_arrivée VARCHAR(50) NOT NULL,
@@ -49,9 +55,10 @@ CREATE TABLE Reserver(
    Compagnie VARCHAR(50),
    Aéroport_de_départ VARCHAR(50),
    Aéroport_d_arrivée VARCHAR(50),
-   PRIMARY KEY(Id_Client, Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée),
+   Escale VARCHAR(50),
+   PRIMARY KEY(Id_Client, Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale),
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
-   FOREIGN KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée) REFERENCES Vol(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée)
+   FOREIGN KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale) REFERENCES Vol(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale)
 );
 
 CREATE TABLE Assurer(
@@ -59,9 +66,10 @@ CREATE TABLE Assurer(
    Compagnie VARCHAR(50),
    Aéroport_de_départ VARCHAR(50),
    Aéroport_d_arrivée VARCHAR(50),
+   Escale VARCHAR(50),
    Id_Compagnie INT,
-   PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Id_Compagnie),
-   FOREIGN KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée) REFERENCES Vol(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée),
+   PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale, Id_Compagnie),
+   FOREIGN KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale) REFERENCES Vol(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale),
    FOREIGN KEY(Id_Compagnie) REFERENCES Compagnie(Id_Compagnie)
 );
 
@@ -70,10 +78,25 @@ CREATE TABLE Atterrir(
    Compagnie VARCHAR(50),
    Aéroport_de_départ VARCHAR(50),
    Aéroport_d_arrivée VARCHAR(50),
+   Escale VARCHAR(50),
    Id_Aéroport INT,
    Vols_au_départ VARCHAR(50),
    Vols_à_l_arrivée VARCHAR(50),
-   PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée),
-   FOREIGN KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée) REFERENCES Vol(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée),
+   PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale, Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée),
+   FOREIGN KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale) REFERENCES Vol(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale),
+   FOREIGN KEY(Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée) REFERENCES Aéroport(Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée)
+);
+
+CREATE TABLE Decollage(
+   Id_Vol INT,
+   Compagnie VARCHAR(50),
+   Aéroport_de_départ VARCHAR(50),
+   Aéroport_d_arrivée VARCHAR(50),
+   Escale VARCHAR(50),
+   Id_Aéroport INT,
+   Vols_au_départ VARCHAR(50),
+   Vols_à_l_arrivée VARCHAR(50),
+   PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale, Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée),
+   FOREIGN KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale) REFERENCES Vol(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale),
    FOREIGN KEY(Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée) REFERENCES Aéroport(Id_Aéroport, Vols_au_départ, Vols_à_l_arrivée)
 );
