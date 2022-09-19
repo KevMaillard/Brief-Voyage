@@ -44,8 +44,7 @@ La plateforme devra permettre que :
 |Date de départ          |Alphanumérique|Date et heure de départ du vol|
 |Aéroport de départ          |Alphanumérique|ID de l'aéroport de départ du vol|
 |Aéroport d'arrivée          |Alphanumérique|ID de l'aéroport d'arrivée du vol|
-|Ouvrir_vol          |Boolean|Ouverture de la réservation par la compagnie|
-|Fermer_vol          |Boolean|Fermeture de la réservation par la compagnie|
+|Etat_vol          |Boolean|Vérification de l'ouverture ou de la fermeture de la reservation|
 |Escale          |Alphanumérique|ID de l'aéroport de l'escale|
 |----------------|-------------------------------|-----------------------------|
 | _**AEROPORT**_
