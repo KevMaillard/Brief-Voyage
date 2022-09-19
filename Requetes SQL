@@ -18,8 +18,7 @@ CREATE TABLE Vol(
    Date_de_départ DATETIME,
    Date_d_arrivée DATETIME,
    Destination VARCHAR(50),
-   Ouvrir_Vol LOGICAL,
-   Fermer_Vol LOGICAL,
+   Etat_Vol LOGICAL,
    PRIMARY KEY(Id_Vol, Compagnie, Aéroport_de_départ, Aéroport_d_arrivée, Escale)
 );
 
