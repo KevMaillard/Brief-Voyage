@@ -10,6 +10,7 @@
 |Email           |Alphanumérique                 |Adresse mail du client       |
 |Numéro de téléphone       |Alphanumérique                 |Numéro de téléphone du client|
 |Id_Passager      |Alphanumérique                 |Identifiant du passager|
+|----------------|-------------------------------|-----------------------------|
 |_**PASSAGER**_|
 |ID_Passager      |Alphanumérique                 |Identifiant du passager                 |
 |Nom             |Alphanumérique                 |Nom du passager                |
