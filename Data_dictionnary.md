@@ -3,16 +3,20 @@
 |NOM             |TYPE                           |DESIGNATION                  |
 |----------------|-------------------------------|-----------------------------|
 | _**CLIENT**_                  |
-|ID_Client       |Alphanumérique                 |ID du client                 |
+|ID_Client       |Alphanumérique                 |Identifiant du client                 |
 |Nom             |Alphanumérique                 |Nom du client                |
 |Prénom          |Alphanumérique                 |Prénom du client             |
-|DDN             |Date                           |Date de naissance du client  |
+|Date de naissance             |Date                           |Date de naissance du client  |
 |Email           |Alphanumérique                 |Adresse mail du client       |
-|Téléphone       |Alphanumérique                 |Numéro de téléphone du client|
-|----------------|-------------------------------|-----------------------------|
-| _**COMPAGNIE**_                  |
-|ID_Compagnie          |Alphanumérique|ID de la compagnie aérienne|
-|Nom          |Alphanumérique|Nom de la compagnie aérienne|
+|Numéro de téléphone       |Alphanumérique                 |Numéro de téléphone du client|
+|Id_Passager      |Alphanumérique                 |Identifiant du passager|
+|_**PASSAGER**_|
+|ID_Passager      |Alphanumérique                 |Identifiant du passager                 |
+|Nom             |Alphanumérique                 |Nom du passager                |
+|Prénom          |Alphanumérique                 |Prénom du passager             |
+|Id_Vol             |Alphanumérique                           |Identifiant du vol  |
+|Numéro de passeport           |Alphanumérique                 |Numéro de passeport du passager       |
+|Id_Client    |Alphanumérique                 |Identifiant du client ayant réservé le vol|
 |----------------|-------------------------------|-----------------------------|
 | _**VOL**_                  |
 |ID_vol          |Alphanumérique|ID du vol|

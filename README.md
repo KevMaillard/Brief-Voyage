@@ -35,7 +35,8 @@ La plateforme devra permettre que :
 |Prénom          |Alphanumérique                 |Prénom du passager             |
 |Id_Vol             |Alphanumérique                           |Identifiant du vol  |
 |Numéro de passeport           |Alphanumérique                 |Numéro de passeport du passager       |
-|Id_Client    |Alphanumérique                 |Identifiant du client ayant réservé le vol||----------------|-------------------------------|-----------------------------|
+|Id_Client    |Alphanumérique                 |Identifiant du client ayant réservé le vol|
+|----------------|-------------------------------|-----------------------------|
 | _**VOL**_                  |
 |ID_vol          |Alphanumérique|ID du vol|
 |Compagnie          |Alphanumérique|ID de la compagnie assurant le vol|
